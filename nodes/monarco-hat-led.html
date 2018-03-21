@@ -1,0 +1,58 @@
+<script type="text/javascript">
+    RED.nodes.registerType('monarco-hat-led', {
+        category: 'Monarco HAT',
+        color: '#ffffff',
+        icon: 'icon.png',
+        defaults: {
+            name: {
+                value: ""
+            },
+            pin: {
+                value: 1,
+                required: true,
+                validate: RED.validators.regex(/[1,2,3,4,5,6,7,8]/)
+            }
+        },
+        inputs: 1,
+        outputs: 0,
+        label: function () {
+            return this.name || "monarco-hat-led" + this.pin;
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="monarco-hat-led">
+    <div class="form-row">
+        <label for="node-input-name">
+            <i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-pin">
+            <i class="icon-tag"></i> Pin</label>
+        <input type="number" id="node-input-pin" min="1" max="8">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="monarco-hat-led">
+    <h1>Monarco-HAT LED</h1>
+    <h3>Parameters</h3>
+    <dl class="message-properties">
+        <dt>Pin
+            <span class="property-type">number</span>
+        </dt>
+        <dd>1, 2, 3, 4, 5, 6, 7 or 8</dd>
+    </dl>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>payload
+            <span class="property-type">boolean</span>
+        </dt>
+        <dd>true/false</dd>
+    </dl>
+    <h3>Details</h3>
+    <p>
+        By default the LEDs are controlled by the Monarco it self.
+        They become controlled by user when the node is used for the first time.
+    </p>
+</script>

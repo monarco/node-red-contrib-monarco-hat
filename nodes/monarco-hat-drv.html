@@ -1,0 +1,255 @@
+<script type="text/javascript">
+    RED.nodes.registerType('monarco-hat-drv', {
+        category: 'Monarco HAT',
+        color: '#ffffff',
+        icon: 'icon.png',
+        defaults: {
+            name: {
+                value: ""
+            },
+            ain1_mode: {
+                value: "0",
+                required: true,
+                validate: RED.validators.regex(/[0,1]/)
+            },
+            ain2_mode: {
+                value: "0",
+                required: true,
+                validate: RED.validators.regex(/[0,1]/)
+            },
+            cnt1_mode: {
+                value: "0",
+                required: true,
+                validate: RED.validators.regex(/[0,1,2]/)
+            },
+            cnt2_mode: {
+                value: "0",
+                required: true,
+                validate: RED.validators.regex(/[0,1,2]/)
+            },
+            rs485_parity: {
+                value: "0",
+                required: true,
+                validate: RED.validators.regex(/[0,1,2]/)
+            },
+            rs485_databits: {
+                value: "0",
+                required: true,
+                validate: RED.validators.regex(/[0,1,2,3]/)
+            },
+            rs485_stopbits: {
+                value: "0",
+                required: true,
+                validate: RED.validators.regex(/[0,1,2,3]/)
+            },
+            rs485_baudrate: {
+                value: "3",
+                required: true,
+                validate: RED.validators.regex(/[0,1,2,3,4,5,6,7]/)
+            },
+            pwm1_freq: {
+                value: "0",
+                required: true,
+                validate: RED.validators.number()
+            },
+            pwm2_freq: {
+                value: "0",
+                required: true,
+                validate: RED.validators.number()
+            }
+        },
+        inputs: 0,
+        outputs: 0,
+        label: function () {
+            return this.name || "monarco-hat-drv";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="monarco-hat-drv">
+    <div class="form-row">
+        <label for="node-input-name">
+            <i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <h3>Analog inputs</h3>
+    <div class="form-row">
+        <label for="node-input-ain1_mode">
+            <i class="icon-tag"></i> AIN1 mode</label>
+        <select name="ain1_mode" id="node-input-ain1_mode">
+            <option value="0" selected>Voltage [0-10V]</option>
+            <option value="1">Current [0-20mA]</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-ain2_mode">
+            <i class="icon-tag"></i> AIN2 mode</label>
+        <select name="ain2_mode" id="node-input-ain2_mode">
+            <option value="0" selected>Voltage [0-10V]</option>
+            <option value="1">Current [0-20mA]</option>
+        </select>
+    </div>
+
+    <h3>Counters</h3>
+    <div class="form-row">
+        <label for="node-input-cnt1_mode">
+            <i class="icon-tag"></i> CNT1 mode</label>
+        <select name="cnt1_mode" id="node-input-cnt1_mode">
+            <option value="0" selected>Off</option>
+            <option value="1">Pulse counter</option>
+            <option value="2">Quadrature (A/B) encoder counter</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-cnt2_mode">
+            <i class="icon-tag"></i> CNT2 mode</label>
+        <select name="cnt2_mode" id="node-input-cnt2_mode">
+            <option value="0" selected>Off</option>
+            <option value="1">Pulse counter</option>
+            <option value="2">Quadrature (A/B) encoder counter</option>
+        </select>
+    </div>
+
+    <h3>RS485</h3>
+    <div class="form-row">
+        <label for="node-input-rs485_parity">
+            <i class="icon-tag"></i> RS485 parity</label>
+        <select name="rs485_parity" id="node-input-rs485_parity">
+            <option value="0" selected>None</option>
+            <option value="1">Even</option>
+            <option value="2">Odd</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-rs485_databits">
+            <i class="icon-tag"></i> RS485 databits</label>
+        <select name="rs485_databits" id="node-input-rs485_databits">
+            <option value="0" selected>5</option>
+            <option value="1">6</option>
+            <option value="2">7</option>
+            <option value="3">8</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-rs485_stopbits">
+            <i class="icon-tag"></i> RS485 stopbits</label>
+        <select name="rs485_stopbits" id="node-input-rs485_stopbits">
+            <option value="0" selected>0</option>
+            <option value="1">1</option>
+            <option value="2">1.5</option>
+            <option value="3">2</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-rs485_baudrate">
+            <i class="icon-tag"></i> RS485 baudrate</label>
+        <select name="rs485_baudrate" id="node-input-rs485_baudrate">
+            <option value="0">1200</option>
+            <option value="1">2400</option>
+            <option value="2">4800</option>
+            <option value="3" selected>9600</option>
+            <option value="4">19200</option>
+            <option value="5">38400</option>
+            <option value="6">57600</option>
+            <option value="7">115200</option>
+        </select>
+    </div>
+
+    <h3>PWM</h3>
+    <div class="form-row">
+        <label for="node-input-pwm1_freq">
+            <i class="icon-tag"></i> PWM1 frequency</label>
+        <input type="number" id="node-input-pwm1_freq" min="0" max="32000000">
+    </div>
+    <div class="form-row">
+        <label for="node-input-pwm2_freq">
+            <i class="icon-tag"></i> PWM2 frequency</label>
+        <input type="number" id="node-input-pwm2_freq" min="0" max="32000000">
+    </div>
+
+    <br>
+</script>
+
+<script type="text/x-red" data-help-name="monarco-hat-drv">
+    <h1>Monarco-HAT Drv</h1>
+    <p>Monarco-HAT driver that handles the initialization and orchestration of the Monarco-HAT hardware.</p>
+    <h3>Parameters</h3>
+    <dl class="message-properties">
+        <dt>AIN1 mode, AIN2 mode
+            <span class="property-type">option</span>
+        </dt>
+        <dd>
+            Available options:
+            <ul>
+                <li>Voltage [0-10V]</li>
+                <li>Current [0-20mA]</li>
+            </ul>
+        </dd>
+        <dt>CNT1 mode, CNT2 mode
+            <span class="property-type">option</span>
+        </dt>
+        <dd>
+            Available options:
+            <ul>
+                <li>Off</li>
+                <li>Pulse counter</li>
+                <li>Quadrature (A/B) encoder counter</li>
+            </ul>
+        </dd>
+        <dt>RS485 parity
+            <span class="property-type">option</span>
+        </dt>
+        <dd>
+            Available options:
+            <ul>
+                <li>None</li>
+                <li>Even</li>
+                <li>Odd</li>
+            </ul>
+        </dd>
+        <dt>RS485 databits
+            <span class="property-type">number</span>
+        </dt>
+        <dd>
+            5, 6, 7 or 8
+        </dd>
+        <dt>RS485 stopbits
+            <span class="property-type">option</span>
+        </dt>
+        <dd>
+            Available options:
+            <ul>
+                <li>0</li>
+                <li>1</li>
+                <li>1.5</li>
+                <li>2</li>
+            </ul>
+        </dd>
+        <dt>RS485 baudrate
+            <span class="property-type">option</span>
+        </dt>
+        <dd>
+            Available options:
+            <ul>
+                <li>2400</li>
+                <li>4800</li>
+                <li>9600</li>
+                <li>19200</li>
+                <li>38400</li>
+                <li>57600</li>
+                <li>115200</li>
+            </ul>
+        </dd>
+        <dt>PWM1 frequency, PWM2 frequency
+            <span class="property-type">number</span>
+        </dt>
+        <dd>
+            0 - 32000000 (0Hz - 32MHz)
+        </dd>
+    </dl>
+    <h3>Details</h3>
+    <p>In all the running flows there should be only one instance of this node. If multiple instances are present the behavior
+        is undefined.</p>
+    <p>If no instance of this node is created all other Monarco-HAT nodes are inactive.</p>
+</script>

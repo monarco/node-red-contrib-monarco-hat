@@ -1,0 +1,86 @@
+<script type="text/javascript">
+    RED.nodes.registerType('monarco-hat-pwm', {
+        category: 'Monarco HAT',
+        color: '#ffffff',
+        icon: 'icon.png',
+        defaults: {
+            name: {
+                value: ""
+            },
+            module: {
+                value: 1,
+                required: true,
+                validate: RED.validators.regex(/[1,2]/)
+            },
+            channel: {
+                value: "a",
+                required: true,
+                validate: RED.validators.regex(/[a,b,c]/)
+            }
+        },
+        inputs: 1,
+        outputs: 0,
+        label: function () {
+            return this.name || "monarco-hat-pwm" + this.module + this.channel;
+        },
+        oneditprepare: function () {
+            $("#node-input-module").change(function () {
+                if ($("#node-input-module").val() === "2") {
+                    $("#node-input-channel").val("a");
+                    $("#node-input-channel").prop('disabled', true);
+                } else {
+                    $("#node-input-channel").prop('disabled', false);
+                }
+            });
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="monarco-hat-pwm">
+    <div class="form-row">
+        <label for="node-input-name">
+            <i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-module">
+            <i class="icon-tag"></i> Module</label>
+        <input type="number" id="node-input-module" min="1" max="2">
+    </div>
+    <div class="form-row">
+        <label for="node-input-channel">
+            <i class="icon-tag"></i> Channel</label>
+        <select name="channel" id="node-input-channel">
+            <option value="a" selected>a</option>
+            <option value="b">b</option>
+            <option value="c">c</option>
+        </select>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="monarco-hat-pwm">
+    <h1>Monarco-HAT PWM - Pulse Width Modulation</h1>
+    <h3>Parameters</h3>
+    <dl class="message-properties">
+        <dt>Module
+            <span class="property-type">number</span>
+        </dt>
+        <dd>1 or 2</dd>
+        <dt>Channel
+            <span class="property-type">char</span>
+        </dt>
+        <dd>'a', 'b' or 'c' for module 1, 'a' for module 2</dd>
+    </dl>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>payload
+            <span class="property-type">number</span>
+        </dt>
+        <dd>0.0 - 1.0</dd>
+    </dl>
+    <h3>Details</h3>
+    <p>
+        PWM frequency can be configured in
+        <code>monarco-hat-drv</code> node.
+    </p>
+</script>

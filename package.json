@@ -1,0 +1,31 @@
+{
+    "name": "node-red-contrib-monarco-hat",
+    "version": "0.0.1",
+    "description": "Monarco HAT driver library for Node-RED",
+    "dependencies": {},
+    "keywords": [
+        "node-red",
+        "monarco",
+        "hat",
+        "monarco-hat",
+        "raspberry"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/monarco/node-red-contrib-monarco-hat.git"
+      },
+    "node-red": {
+        "nodes": {
+            "monarco-hat-drv": "nodes/monarco-hat-drv.js",
+            "monarco-hat-ain": "nodes/monarco-hat-ain.js",
+            "monarco-hat-din": "nodes/monarco-hat-din.js",
+            "monarco-hat-aout": "nodes/monarco-hat-aout.js",
+            "monarco-hat-dout": "nodes/monarco-hat-dout.js",
+            "monarco-hat-cnt": "nodes/monarco-hat-cnt.js",
+            "monarco-hat-led": "nodes/monarco-hat-led.js",
+            "monarco-hat-pwm": "nodes/monarco-hat-pwm.js"
+        }
+    },
+    "author": "Jiri Faist",
+    "license": "BSD 3-Clause License"
+}

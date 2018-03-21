@@ -1,0 +1,58 @@
+<script type="text/javascript">
+    RED.nodes.registerType('monarco-hat-ain', {
+        category: 'Monarco HAT',
+        color: '#ffffff',
+        icon: 'icon.png',
+        defaults: {
+            name: {
+                value: ""
+            },
+            pin: {
+                value: 1,
+                required: true,
+                validate: RED.validators.regex(/[1,2]/)
+            }
+        },
+        inputs: 0,
+        outputs: 1,
+        label: function () {
+            return this.name || "monarco-hat-ain" + this.pin;
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="monarco-hat-ain">
+    <div class="form-row">
+        <label for="node-input-name">
+            <i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-pin">
+            <i class="icon-tag"></i> Pin</label>
+        <input type="number" id="node-input-pin" min="1" max="2">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="monarco-hat-ain">
+    <h1>Monarco-HAT AIN - Analog INput</h1>
+    <h3>Parameters</h3>
+    <dl class="message-properties">
+        <dt>Pin
+            <span class="property-type">number</span>
+        </dt>
+        <dd>1 or 2</dd>
+    </dl>
+    <h3>Outputs</h3>
+    <dl class="message-properties">
+        <dt>payload
+            <span class="property-type">number</span>
+        </dt>
+        <dd>0-10[V] or 0-20[mA]</dd>
+    </dl>
+    <h3>Details</h3>
+    <p>
+        Mode of analog inputs can be set in
+        <code>monarco-hat-drv</code> node to meassure Volts in range 0-10[V] or Milliamperes in range 0-20[mA].
+    </p>
+</script>
