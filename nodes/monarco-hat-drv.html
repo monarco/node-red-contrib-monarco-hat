@@ -56,6 +56,11 @@
                 value: "0",
                 required: true,
                 validate: RED.validators.number()
+            },
+            watchdog: {
+                value: "1000",
+                required: true,
+                validate: RED.validators.number()
             }
         },
         inputs: 0,
@@ -167,7 +172,12 @@
             <i class="icon-tag"></i> PWM2 frequency</label>
         <input type="number" id="node-input-pwm2_freq" min="0" max="32000000">
     </div>
-
+    <h3>Watchdog</h3>
+    <div class="form-row">
+        <label for="node-input-pwm2_freq">
+            <i class="icon-tag"></i> Watchdog [ms]</label>
+        <input type="number" id="node-input-watchdog" min="0" max="32000">
+    </div>
     <br>
 </script>
 

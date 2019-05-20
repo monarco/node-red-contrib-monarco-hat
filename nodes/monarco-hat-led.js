@@ -1,4 +1,4 @@
-let monarco = require('monarco');
+let monarco = require('monarco-hat');
 
 module.exports = function (RED) {
 

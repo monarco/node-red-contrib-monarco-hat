@@ -1,6 +1,6 @@
 # node-red-contrib-monarco-hat - Node-RED driver library for Monarco HAT
 
-VERSION: 1.1, FIRMWARE: 2.006
+Compatible Monarco HAT firmware version: 2.006
 
 ### Getting started
 
@@ -31,7 +31,7 @@ npm install node-red-contrib-monarco-hat
 ```
 
 #### Example flow
-Use [this flow (TODO: add working link to github flow registry)](https://www.TODO.com) to see all the nodes of this library in action.
+Try out [this flow](https://flows.nodered.org/flow/b798499fe802ac146fe9539ab787b620) to see all the nodes of this library in action.
 
 ## License
 

@@ -1,4 +1,4 @@
-let monarco = require('monarco');
+let monarco = require('monarco-hat');
 
 module.exports = function (RED) {
 
@@ -6,17 +6,21 @@ module.exports = function (RED) {
         RED.nodes.createNode(this, config);
         let node = this;
         let pin = Number(config.pin);
-        if(pin < 1 || pin > 2){
-            this.status({fill:"red",shape:"ring",text:"pin is not valid"});
+        if (pin < 1 || pin > 2) {
+            this.status({
+                fill: "red",
+                shape: "ring",
+                text: "pin is not valid"
+            });
             return;
         }
 
-        this.on('input', function(msg) {
+        this.on('input', function (msg) {
             let payload = msg.payload;
-            if(typeof(payload) === 'number'){
-                monarco.digitalOutputs[pin - 1] = value;
+            if (typeof (payload) === 'number') {
+                monarco.digitalOutputs[pin - 1] = payload;
             }
-        });       
+        });
     }
     RED.nodes.registerType("monarco-hat-aout", MonarcoHAT_AOUT);
 }

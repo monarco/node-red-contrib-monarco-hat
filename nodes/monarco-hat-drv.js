@@ -1,4 +1,4 @@
-var monarco = require('monarco');
+let monarco = require('monarco-hat');
 
 module.exports = function (RED) {
 
@@ -34,6 +34,9 @@ module.exports = function (RED) {
                     break;
             }
         }
+
+        let SDC_FIXED_WATCHDOG = 0x100F;
+        setRegValue(monarco.serviceData, SDC_FIXED_WATCHDOG, Number(config.watchdog));
 
         /* RS485 configuration */
         let SDC_FIXED_RS485BAUD = 0x1010;
@@ -157,7 +160,7 @@ module.exports = function (RED) {
                 text: "Error CNT: " + errorCnt + "; Last error: " + err
             });
             if (buffer) {
-                node.error("Buffer: " + buffer);
+                node.error("Buffer: " + buffer.toString('hex'));
             }
         }
 
