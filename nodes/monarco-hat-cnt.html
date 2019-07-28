@@ -1,7 +1,7 @@
 <script type="text/javascript">
     RED.nodes.registerType('monarco-hat-cnt', {
         category: 'Monarco HAT',
-        color: '#ffffff',
+        color: '#C6DBEF',
         icon: 'icon.png',
         defaults: {
             name: {
@@ -16,7 +16,10 @@
         inputs: 0,
         outputs: 1,
         label: function () {
-            return this.name || "monarco-hat-cnt" + this.pin;
+            return this.name || "Monarco HAT CNT" + this.pin;
+        },
+        paletteLabel: function () {
+            return "Counter IN";
         }
     });
 </script>
@@ -35,7 +38,7 @@
 </script>
 
 <script type="text/x-red" data-help-name="monarco-hat-cnt">
-    <h1>Monarco-HAT CNT - CouNTer</h1>
+    <h1>Monarco HAT Counter Input</h1>
     <h3>Parameters</h3>
     <dl class="message-properties">
         <dt>Pin
@@ -53,7 +56,7 @@
     <h3>Details</h3>
     <p>
         Counters can be configured in
-        <code>monarco-hat-drv</code> node.
+        <code>Monarco HAT Configuration</code> node.
     </p>
     <p>
         Available modes are:

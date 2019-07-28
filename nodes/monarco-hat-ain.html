@@ -1,7 +1,7 @@
 <script type="text/javascript">
     RED.nodes.registerType('monarco-hat-ain', {
         category: 'Monarco HAT',
-        color: '#ffffff',
+        color: '#C6DBEF',
         icon: 'icon.png',
         defaults: {
             name: {
@@ -16,7 +16,10 @@
         inputs: 0,
         outputs: 1,
         label: function () {
-            return this.name || "monarco-hat-ain" + this.pin;
+            return this.name || "Monarco HAT AI" + this.pin;
+        },
+        paletteLabel: function () {
+            return "Analog IN";
         }
     });
 </script>
@@ -35,7 +38,7 @@
 </script>
 
 <script type="text/x-red" data-help-name="monarco-hat-ain">
-    <h1>Monarco-HAT AIN - Analog INput</h1>
+    <h1>Monarco HAT Analog Input</h1>
     <h3>Parameters</h3>
     <dl class="message-properties">
         <dt>Pin
@@ -53,6 +56,6 @@
     <h3>Details</h3>
     <p>
         Mode of analog inputs can be set in
-        <code>monarco-hat-drv</code> node to meassure Volts in range 0-10[V] or Milliamperes in range 0-20[mA].
+        <code>Monarco HAT Configuration</code> node to meassure Volts in range 0-10 [V] or Milliamperes in range 0-20 [mA].
     </p>
 </script>

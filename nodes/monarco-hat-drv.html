@@ -1,7 +1,7 @@
 <script type="text/javascript">
     RED.nodes.registerType('monarco-hat-drv', {
         category: 'Monarco HAT',
-        color: '#ffffff',
+        color: '#E9967A',
         icon: 'icon.png',
         defaults: {
             name: {
@@ -66,7 +66,10 @@
         inputs: 0,
         outputs: 0,
         label: function () {
-            return this.name || "monarco-hat-drv";
+            return this.name || "Monarco HAT";
+        },
+        paletteLabel: function () {
+            return "Monarco HAT Configuration";
         }
     });
 </script>
@@ -182,8 +185,9 @@
 </script>
 
 <script type="text/x-red" data-help-name="monarco-hat-drv">
-    <h1>Monarco-HAT Drv</h1>
-    <p>Monarco-HAT driver that handles the initialization and orchestration of the Monarco-HAT hardware.</p>
+    <h1>Monarco HAT Configuration</h1>
+    <p>Monarco HAT driver that handles the initialization and orchestration of the Monarco HAT I/O board.</p>
+    <p>For more details about the Monarco HAT visit <a href="www.monarco.io">www.monarco.io</a>.</p>
     <h3>Parameters</h3>
     <dl class="message-properties">
         <dt>AIN1 mode, AIN2 mode
@@ -257,9 +261,15 @@
         <dd>
             0 - 32000000 (0Hz - 32MHz)
         </dd>
+        <dt>Watchdog
+            <span class="property-type">number</span>
+        </dt>
+        <dd>
+            0 - 32000 [ms], 0 = disabled
+        </dd>
     </dl>
     <h3>Details</h3>
     <p>In all the running flows there should be only one instance of this node. If multiple instances are present the behavior
         is undefined.</p>
-    <p>If no instance of this node is created all other Monarco-HAT nodes are inactive.</p>
+    <p>If no instance of this node is created all other Monarco HAT nodes are inactive.</p>
 </script>

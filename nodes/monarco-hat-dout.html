@@ -1,7 +1,7 @@
 <script type="text/javascript">
     RED.nodes.registerType('monarco-hat-dout', {
         category: 'Monarco HAT',
-        color: '#ffffff',
+        color: '#C6DBEF',
         icon: 'icon.png',
         defaults: {
             name: {
@@ -16,7 +16,10 @@
         inputs: 1,
         outputs: 0,
         label: function () {
-            return this.name || "monarco-hat-dout" + this.pin;
+            return this.name || "Monarco HAT DO" + this.pin;
+        },
+        paletteLabel: function () {
+            return "Digital OUT";
         }
     });
 </script>
@@ -35,7 +38,7 @@
 </script>
 
 <script type="text/x-red" data-help-name="monarco-hat-dout">
-    <h1>Monarco-HAT DOUT - Digital OUTput</h1>
+    <h1>Monarco HAT Digital Output</h1>
     <h3>Parameters</h3>
     <dl class="message-properties">
         <dt>Pin

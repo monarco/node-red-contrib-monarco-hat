@@ -1,5 +1,5 @@
 <script type="text/javascript">
-    RED.nodes.registerType('monarco-hat-aout', {
+    RED.nodes.registerType('monarco-hat-cnt-reset', {
         category: 'Monarco HAT',
         color: '#C6DBEF',
         icon: 'icon.png',
@@ -16,15 +16,15 @@
         inputs: 1,
         outputs: 0,
         label: function () {
-            return this.name || "Monarco HAT AO" + this.pin;
+            return this.name || "Monarco HAT CNT" + this.pin + " Reset";
         },
         paletteLabel: function () {
-            return "Analog OUT";
+            return "Counter IN Reset";
         }
     });
 </script>
 
-<script type="text/x-red" data-template-name="monarco-hat-aout">
+<script type="text/x-red" data-template-name="monarco-hat-cnt-reset">
     <div class="form-row">
         <label for="node-input-name">
             <i class="icon-tag"></i> Name</label>
@@ -37,16 +37,33 @@
     </div>
 </script>
 
-<script type="text/x-red" data-help-name="monarco-hat-aout">
-    <h1>Monarco HAT Analog Output</h1>
+<script type="text/x-red" data-help-name="monarco-hat-cnt-reset">
+    <h1>Monarco HAT Counter Input Reset</h1>
     <h3>Parameters</h3>
     <dl class="message-properties">
-        <dt>Pin <span class="property-type">number</span></dt>
+        <dt>Pin
+            <span class="property-type">number</span>
+        </dt>
         <dd>1 or 2</dd>
     </dl>
     <h3>Inputs</h3>
     <dl class="message-properties">
-        <dt>payload <span class="property-type">number</span></dt>
-        <dd>0-10 [V]</dd>
+        <dt>payload
+            <span class="property-type">boolean</span>
+        </dt>
+        <dd>true/false</dd>
     </dl>
+    <h3>Details</h3>
+    <p>
+        Counters can be configured in
+        <code>Monarco HAT Configuration</code> node.
+    </p>
+    <p>
+        Available modes are:
+        <ul>
+            <li>Off</li>
+            <li>Pulse counter</li>
+            <li>Quadrature (A/B) encoder counter</li>
+        </ul>
+    </p>
 </script>

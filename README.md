@@ -1,37 +1,51 @@
 # node-red-contrib-monarco-hat - Node-RED driver library for Monarco HAT
 
-Compatible Monarco HAT firmware version: 2.006
+Compatible Monarco HAT firmware version: 2.006 and newer
+
+Tested on: Raspbian 2019-07-10 (Full and Lite)
 
 ### Getting started
 
 #### Install prerequisites
 Install required build-dependencies on your Raspbian running on Raspberry Pi:
+
 ```
 sudo apt update
 sudo apt install build-essential 
 ```
-Install Node.js on your Raspbian running on Raspberry Pi:
-```
-curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-sudo apt install -y nodejs
-```
-Follow this link for more information: [Installing Node.js via package manager](https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions)
 
-Install Node-RED:
-```
-sudo npm install -g --unsafe-perm node-red
-```
-Follow this link for more information: [Node-RED Installation](https://nodered.org/docs/getting-started/installation)
+Install Node-RED, node.js and npm on your Raspberry Pi:
 
-#### Install library
-Run the following command in the root directory of your Node-RED install:
 ```
-cd ~/.node-red
-npm install node-red-contrib-monarco-hat
+bash <(curl -sL https://raw.githubusercontent.com/node-red/raspbian-deb-package/master/resources/update-nodejs-and-nodered)
 ```
 
-#### Example flow
+_For the curious, here are the details: [Running Node-RED on Raspberry Pi](https://nodered.org/docs/getting-started/raspberrypi)._
+
+#### Start Node-RED
+Start the Node-RED system service:
+
+```
+node-red-start
+```
+
+#### Install Monarco HAT nodes
+Point your web browser (Firefox or Chrome) to e.g. http://192.168.1.100:1880 to open the Node-RED flow editor.Make sure to use the IP address of your Raspberry Pi. 
+
+Select the Manage Palette option from the main menu to open the Palette Manager. The _Install_ tab lets you search the catalogue of available node modules and install them. Find the _node-red-contrib-monarco-hat_ palette and install it.
+
+#### Done
+You can now use the I/Os of the Monarco HAT in Node-RED.
+
+### Example flow
 Try out [this flow](https://flows.nodered.org/flow/b798499fe802ac146fe9539ab787b620) to see all the nodes of this library in action.
+
+### Starting Node-RED automatically
+If you want your flows to start automatically on system startup, run the following command:
+
+```
+sudo systemctl enable nodered.service
+```
 
 ## License
 

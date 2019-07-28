@@ -1,7 +1,7 @@
 <script type="text/javascript">
     RED.nodes.registerType('monarco-hat-din', {
         category: 'Monarco HAT',
-        color: '#ffffff',
+        color: '#C6DBEF',
         icon: 'icon.png',
         defaults: {
             name: {
@@ -16,7 +16,10 @@
         inputs: 0,
         outputs: 1,
         label: function () {
-            return this.name || "monarco-hat-din" + this.pin;
+            return this.name || "Monarco HAT DI" + this.pin;
+        },
+        paletteLabel: function () {
+            return "Digital IN";
         }
     });
 </script>
@@ -35,7 +38,7 @@
 </script>
 
 <script type="text/x-red" data-help-name="monarco-hat-din">
-    <h1>Monarco-HAT DIN - Digital INput</h1>
+    <h1>Monarco HAT Digital Input</h1>
     <h3>Parameters</h3>
     <dl class="message-properties">
         <dt>Pin

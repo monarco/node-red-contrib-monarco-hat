@@ -1,7 +1,7 @@
 <script type="text/javascript">
     RED.nodes.registerType('monarco-hat-pwm', {
         category: 'Monarco HAT',
-        color: '#ffffff',
+        color: '#C6DBEF',
         icon: 'icon.png',
         defaults: {
             name: {
@@ -21,7 +21,10 @@
         inputs: 1,
         outputs: 0,
         label: function () {
-            return this.name || "monarco-hat-pwm" + this.module + this.channel;
+            return this.name || "Monarco HAT PWM" + this.module + this.channel;
+        },
+        paletteLabel: function () {
+            return "PWM OUT";
         },
         oneditprepare: function () {
             $("#node-input-module").change(function () {
@@ -59,7 +62,7 @@
 </script>
 
 <script type="text/x-red" data-help-name="monarco-hat-pwm">
-    <h1>Monarco-HAT PWM - Pulse Width Modulation</h1>
+    <h1>Monarco HAT PWM Output (Pulse-Width Modulation)</h1>
     <h3>Parameters</h3>
     <dl class="message-properties">
         <dt>Module
@@ -81,6 +84,6 @@
     <h3>Details</h3>
     <p>
         PWM frequency can be configured in
-        <code>monarco-hat-drv</code> node.
+        <code>Monarco HAT Configuration</code> node.
     </p>
 </script>

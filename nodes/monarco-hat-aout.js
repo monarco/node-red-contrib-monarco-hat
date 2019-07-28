@@ -18,7 +18,7 @@ module.exports = function (RED) {
         this.on('input', function (msg) {
             let payload = msg.payload;
             if (typeof (payload) === 'number') {
-                monarco.digitalOutputs[pin - 1] = payload;
+                monarco.analogOutputs[pin - 1] = payload;
             }
         });
     }
