@@ -10,9 +10,9 @@ module.exports = function (RED) {
         let ain_modes = [Number(config.ain1_mode), Number(config.ain2_mode)];
         for (let i = 0; i < 2; i++) {
             if (ain_modes[i] === 0) {
-                monarco.setAnalogInputModeToVoltage(i);
+                monarco.setAnalogInputModeToVoltage(i + 1);
             } else {
-                monarco.setAnalogInputModeToCurrent(i);
+                monarco.setAnalogInputModeToCurrent(i + 1);
             }
         }
 

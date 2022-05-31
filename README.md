@@ -2,7 +2,7 @@
 
 Compatible Monarco HAT firmware version: 2.006 and newer
 
-Tested on: Raspbian 2019-07-10 (Full and Lite)
+Tested on: Raspbios 2021-01-11 (Full and Lite)
 
 ### Getting started
 
@@ -17,7 +17,7 @@ sudo apt install build-essential
 Install Node-RED, node.js and npm on your Raspberry Pi:
 
 ```
-bash <(curl -sL https://raw.githubusercontent.com/node-red/raspbian-deb-package/master/resources/update-nodejs-and-nodered)
+bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
 ```
 
 _For the curious, here are the details: [Running Node-RED on Raspberry Pi](https://nodered.org/docs/getting-started/raspberrypi)._
